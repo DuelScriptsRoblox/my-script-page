@@ -83,7 +83,22 @@
 
     function copyScript() {
       const script = document.querySelector(".script-box").innerText;
-      navigator.clipboard.writeText(script);
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(script);
+      } else {
+        const area = document.createElement("textarea");
+        area.value = script;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      document.getElementById("copyButton").textContent = "COPIED!";
+      setTimeout(() => {
+        document.getElementById("copyButton").textContent = "COPY";
+      }, 1500);
     }
   </script>
 

@@ -33,6 +33,12 @@
       color: black;
       font-size: 20px;
       font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: black;
+      color: white;
     }
 
     .script-box {
@@ -49,15 +55,17 @@
 <body>
 
   <div class="container">
+
     <button onclick="openScript()">SCRIPT</button>
 
     <div id="scriptSection">
       <h2>Script</h2>
 
       <div class="script-box">
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptsSab/DuelScript/refs/heads/main/Silencedvs.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/DuelScripts/Op/refs/heads/main/duels"))()
       </div>
     </div>
+
   </div>
 
   <script>

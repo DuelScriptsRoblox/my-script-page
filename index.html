@@ -49,6 +49,12 @@
       max-width: 500px;
       word-break: break-all;
     }
+
+    #copyButton {
+      margin-top: 12px;
+      padding: 10px 24px;
+      font-size: 16px;
+    }
   </style>
 </head>
 
@@ -64,6 +70,8 @@
       <div class="script-box">
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DuelScripts/Op/refs/heads/main/duels"))()
       </div>
+
+      <button id="copyButton" onclick="copyScript()">COPY</button>
     </div>
 
   </div>
@@ -71,6 +79,11 @@
   <script>
     function openScript() {
       document.getElementById("scriptSection").style.display = "block";
+    }
+
+    function copyScript() {
+      const script = document.querySelector(".script-box").innerText;
+      navigator.clipboard.writeText(script);
     }
   </script>
 

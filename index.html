@@ -55,6 +55,10 @@
       padding: 10px 24px;
       font-size: 16px;
     }
+
+    .script-card {
+      margin-top: 30px;
+    }
   </style>
 </head>
 
@@ -65,13 +69,21 @@
     <button onclick="openScript()">SCRIPT</button>
 
     <div id="scriptSection">
-      <h2>Script</h2>
+      <h2>DUELS SCRIPT</h2>
 
       <div class="script-box">
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DuelScripts/Op/refs/heads/main/duels"))()
       </div>
 
       <button id="copyButton" onclick="copyScript()">COPY</button>
+
+      <div class="script-card">
+        <h2>SERVER BYPASS SCRIPT</h2>
+        <div class="script-box">
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/SolunaScript/Kawatan-Hub/refs/heads/main/Kawatan%20Script"))()
+        </div>
+        <button id="copyBypassButton" onclick="copyBypassScript()">COPY</button>
+      </div>
     </div>
 
   </div>
@@ -98,6 +110,15 @@
       document.getElementById("copyButton").textContent = "COPIED!";
       setTimeout(() => {
         document.getElementById("copyButton").textContent = "COPY";
+      }, 1500);
+    }
+
+    function copyBypassScript() {
+      const script = document.querySelectorAll(".script-box")[1].innerText;
+      navigator.clipboard.writeText(script).catch(() => {});
+      document.getElementById("copyBypassButton").textContent = "COPIED!";
+      setTimeout(() => {
+        document.getElementById("copyBypassButton").textContent = "COPY";
       }, 1500);
     }
   </script>

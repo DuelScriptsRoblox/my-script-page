@@ -247,6 +247,46 @@
       letter-spacing: 8px;
     }
 
+    .vampire-banner {
+      margin: 10px auto 25px;
+      padding: 14px;
+      border: 2px solid #e3b7ff;
+      border-radius: 18px;
+      background: rgba(20, 0, 35, 0.65);
+      box-shadow: 0 0 25px rgba(190, 70, 255, 0.45);
+      font-size: 36px;
+      animation: vampireGlow 2s infinite alternate;
+    }
+
+    @keyframes vampireGlow {
+      from { transform: translateY(0); box-shadow: 0 0 15px rgba(190, 70, 255, 0.35); }
+      to { transform: translateY(-4px); box-shadow: 0 0 32px rgba(190, 70, 255, 0.7); }
+    }
+
+    .discord-main-button {
+      width: 100%;
+      max-width: 420px;
+      margin-top: 20px;
+      background: #5865F2;
+      color: white;
+      border-color: #9ca3ff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .feature-box {
+      padding: 15px;
+      border: 2px solid #b45cff;
+      border-radius: 14px;
+      background: rgba(25, 0, 40, 0.65);
+      animation: fadeIn 0.7s ease;
+    }
+
     .soft-theme {
       background: linear-gradient(135deg, #21002b, #5d176f, #190021) !important;
       color: white;
@@ -274,6 +314,8 @@
 
     <div class="logo">DUELS SCRIPT HUB</div>
 
+    <div class="vampire-banner">🧛🏻‍♂️ 🦇 🩸 🦇 🧛🏻‍♀️</div>
+
     <input class="search" id="searchInput" oninput="searchScripts()" placeholder="Search scripts...">
 
     <div class="filter-row">
@@ -285,6 +327,8 @@
     <div class="loading" id="loading">Loading...</div>
 
     <button onclick="openScript()">SCRIPT</button>
+
+    <button class="discord-main-button" onclick="openDiscord()">💬 JOIN OUR DISCORD</button>
 
     <div id="scriptSection">
       <h2>DUELS SCRIPT</h2>
@@ -332,6 +376,13 @@
         <h2>🏆 TOP SCRIPTS</h2>
         <p>⭐ DUELS SCRIPT</p>
         <p>🆕 SERVER BYPASS SCRIPT</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-box">⚡ Fast Copy</div>
+        <div class="feature-box">🆕 New Updates</div>
+        <div class="feature-box">⭐ Favorites</div>
+        <div class="feature-box">🧛 Vampire Theme</div>
       </div>
 
       <div class="extra-panel">
@@ -459,7 +510,7 @@
     }
 
     function openDiscord() {
-      window.open("https://discord.gg/sHvaKKNyR", "_blank");
+      window.location.href = "https://discord.gg/sHvaKKNyR";
     }
 
     function openGamePass() {

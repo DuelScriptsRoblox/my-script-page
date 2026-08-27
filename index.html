@@ -126,6 +126,30 @@
       margin-top: 15px;
     }
 
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .filter-row button {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+
+    .favorite-button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .loading {
+      margin: 15px;
+      font-weight: bold;
+    }
+
     #darkModeButton {
       margin-top: 30px;
       font-size: 16px;
@@ -157,6 +181,14 @@
 
     <input class="search" id="searchInput" oninput="searchScripts()" placeholder="Search scripts...">
 
+    <div class="filter-row">
+      <button onclick="filterScripts('all')">ALL</button>
+      <button onclick="filterScripts('duels')">DUELS</button>
+      <button onclick="filterScripts('bypass')">BYPASS</button>
+    </div>
+
+    <div class="loading" id="loading">Loading...</div>
+
     <button onclick="openScript()">SCRIPT</button>
 
     <div id="scriptSection">
@@ -171,6 +203,7 @@
       <p class="info">⭐ DUELS SCRIPT · 🆕 Updated</p>
 
       <button id="copyButton" onclick="copyScript()">COPY</button>
+      <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
 
       <div class="script-card">
         <span class="badge">🆕 NEW</span>
@@ -180,6 +213,7 @@
           loadstring(game:HttpGet("https://raw.githubusercontent.com/SolunaScript/Kawatan-Hub/refs/heads/main/Kawatan%20Script"))()
         </div>
         <button id="copyBypassButton" onclick="copyBypassScript()">COPY</button>
+        <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
       </div>
 
       <div class="action-row">
@@ -206,6 +240,7 @@
   <script>
     function openScript() {
       document.getElementById("scriptSection").style.display = "block";
+      document.getElementById("loading").style.display = "none";
     }
 
     function copyScript() {
@@ -246,6 +281,17 @@
       document.querySelectorAll("#scriptSection .script-card, #scriptSection > h2").forEach(el => {
         el.style.display = !query || el.innerText.toLowerCase().includes(query) ? "" : "none";
       });
+    }
+
+    function filterScripts(type) {
+      const duelsTitle = document.querySelector("#scriptSection > h2");
+      const bypassCard = document.querySelector(".script-card");
+      duelsTitle.style.display = type === "bypass" ? "none" : "";
+      bypassCard.style.display = type === "duels" ? "none" : "";
+    }
+
+    function toggleFavorite(button) {
+      button.textContent = button.textContent.includes("☆") ? "★ FAVORITED" : "☆ FAVORITE";
     }
 
     function copyAllScripts() {

@@ -98,6 +98,34 @@
       margin-top: 30px;
     }
 
+    .script-card .badge {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 9px;
+      border: 1px solid black;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .share-button, .favorites-button, .games-button, .refresh-button {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .info {
+      margin: 8px 0 12px;
+      font-size: 14px;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
     #darkModeButton {
       margin-top: 30px;
       font-size: 16px;
@@ -140,9 +168,12 @@
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DuelScripts/Op/refs/heads/main/duels"))()
       </div>
 
+      <p class="info">⭐ DUELS SCRIPT · 🆕 Updated</p>
+
       <button id="copyButton" onclick="copyScript()">COPY</button>
 
       <div class="script-card">
+        <span class="badge">🆕 NEW</span>
         <h2>SERVER BYPASS SCRIPT</h2>
         <p class="description">A server bypass script section.</p>
         <div class="script-box">
@@ -151,15 +182,17 @@
         <button id="copyBypassButton" onclick="copyBypassScript()">COPY</button>
       </div>
 
-      <button id="darkModeButton" onclick="toggleDarkMode()">🌙 DARK MODE</button>
-
-      <button id="copyAllButton" onclick="copyAllScripts()">COPY ALL</button>
-
-      <button class="discord-button" onclick="openDiscord()">DISCORD</button>
-
-      <button class="home-button" onclick="goHome()">HOME</button>
-
-      <button class="updates-button" onclick="showUpdates()">🆕 UPDATES</button>
+      <div class="action-row">
+        <button id="darkModeButton" onclick="toggleDarkMode()">🌙 DARK MODE</button>
+        <button id="copyAllButton" onclick="copyAllScripts()">COPY ALL</button>
+        <button class="discord-button" onclick="openDiscord()">DISCORD</button>
+        <button class="home-button" onclick="goHome()">HOME</button>
+        <button class="updates-button" onclick="showUpdates()">🆕 UPDATES</button>
+        <button class="favorites-button" onclick="alert('Favorites coming soon!')">⭐ FAVORITES</button>
+        <button class="games-button" onclick="alert('Games section coming soon!')">🎮 GAMES</button>
+        <button class="share-button" onclick="sharePage()">🔗 SHARE</button>
+        <button class="refresh-button" onclick="location.reload()">🔄 REFRESH</button>
+      </div>
 
       <div class="announcements" id="announcements">
         <h2>📢 ANNOUNCEMENTS</h2>
@@ -232,6 +265,15 @@
 
     function showUpdates() {
       document.getElementById("announcements").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({ title: "DUELS SCRIPT HUB", url: window.location.href });
+      } else {
+        navigator.clipboard.writeText(window.location.href).catch(() => {});
+        alert("Page link copied!");
+      }
     }
   </script>
 

@@ -272,6 +272,38 @@
       border-color: #9ca3ff;
     }
 
+    .social-button {
+      width: 100%;
+      max-width: 420px;
+      margin-top: 12px;
+      background: #ff1744;
+      color: white;
+      border-color: #ff8aa0;
+    }
+
+    .vampire-card {
+      margin: 18px auto;
+      padding: 18px;
+      max-width: 500px;
+      border: 2px solid #d58aff;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(35,0,55,.9), rgba(85,10,100,.65));
+      box-shadow: 0 0 28px rgba(190,70,255,.45);
+      animation: vampireFloat 3s ease-in-out infinite;
+    }
+
+    .vampire-card .sticker {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    .vampire-card h2 { margin: 5px 0; }
+
+    @keyframes vampireFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -316,6 +348,12 @@
 
     <div class="vampire-banner">🧛🏻‍♂️ 🦇 🩸 🦇 🧛🏻‍♀️</div>
 
+    <div class="vampire-card">
+      <div class="sticker">🧛🏻‍♂️🦇🩸</div>
+      <h2>WELCOME TO THE NIGHT</h2>
+      <p>Explore the hub and check the latest updates.</p>
+    </div>
+
     <input class="search" id="searchInput" oninput="searchScripts()" placeholder="Search scripts...">
 
     <div class="filter-row">
@@ -329,6 +367,8 @@
     <button onclick="openScript()">SCRIPT</button>
 
     <button class="discord-main-button" onclick="openDiscord()">💬 JOIN OUR DISCORD</button>
+
+    <button class="social-button" onclick="openYouTube()">▶️ SUBSCRIBE ON YOUTUBE</button>
 
     <div id="scriptSection">
       <h2>DUELS SCRIPT</h2>
@@ -510,7 +550,11 @@
     }
 
     function openDiscord() {
-      window.location.href = "https://discord.gg/sHvaKKNyR";
+      window.open("https://discord.gg/sHvaKKNyR", "_blank");
+    }
+
+    function openYouTube() {
+      window.open("https://www.youtube.com/@ryxon_rbx", "_blank");
     }
 
     function openGamePass() {

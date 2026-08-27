@@ -145,6 +145,21 @@
       font-weight: bold;
     }
 
+    .timebomb-card {
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px solid #ff5c8a;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(45,0,25,.95), rgba(95,10,55,.7));
+      box-shadow: 0 0 25px rgba(255,70,130,.35);
+    }
+
+    .timebomb-title {
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 0 0 15px rgba(255,100,160,.7);
+    }
+
     .share-button, .favorites-button, .games-button, .refresh-button {
       margin-top: 15px;
       font-size: 16px;
@@ -395,6 +410,16 @@
         <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
       </div>
 
+      <div class="timebomb-card">
+        <div class="timebomb-title">⏱️💣 TIME BOMB DUELS</div>
+        <p class="description">A new Duels script.</p>
+        <div class="script-box">
+          loadstring(game:HttpGet("https://rawscripts.net/raw/Timebomb-Duels-Alpha-PhantomX-Hub-227153"))()
+        </div>
+        <button onclick="copyTimebombScript()">COPY</button>
+        <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
+      </div>
+
       <div class="action-row">
         <button id="darkModeButton" onclick="toggleDarkMode()">🌙 DARK MODE</button>
         <button id="copyAllButton" onclick="copyAllScripts()">COPY ALL</button>
@@ -512,6 +537,11 @@
       setTimeout(() => {
         document.getElementById("copyBypassButton").textContent = "COPY";
       }, 1500);
+    }
+
+    function copyTimebombScript() {
+      const script = document.querySelector(".timebomb-card .script-box").innerText;
+      navigator.clipboard.writeText(script).catch(() => {});
     }
 
     function toggleDarkMode() {

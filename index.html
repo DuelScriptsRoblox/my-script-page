@@ -85,6 +85,7 @@ body::after {
   from {
     box-shadow: 0 0 12px #8b27bd;
   }
+
   to {
     box-shadow: 0 0 32px #d05cff;
   }
@@ -125,8 +126,6 @@ body::after {
   color: #dcb5ed;
 }
 
-/* ALL BUTTONS */
-
 button {
   padding: 12px 24px;
   margin: 5px;
@@ -155,8 +154,6 @@ button:active {
   transform: scale(.97);
 }
 
-/* FILTER */
-
 .filter-row {
   display: flex;
   justify-content: center;
@@ -170,11 +167,19 @@ button:active {
   font-size: 13px;
 }
 
-/* SCRIPT SECTION */
-
 #scriptSection {
   display: none;
   margin-top: 25px;
+}
+
+.script-card {
+  margin: 18px auto;
+  padding: 20px;
+  max-width: 520px;
+  border: 2px solid #b45cff;
+  border-radius: 18px;
+  background: #130019;
+  box-shadow: 0 0 18px rgba(160,70,220,.35);
 }
 
 .script-box {
@@ -185,8 +190,7 @@ button:active {
   color: #f1d9ff;
   max-width: 520px;
   margin: auto;
-  word-break: break-all;
-  box-shadow: 0 0 18px rgba(160,70,220,.35);
+  word-break: break-word;
 }
 
 .info {
@@ -198,8 +202,6 @@ button:active {
   font-size: 13px;
   padding: 9px 15px;
 }
-
-/* TIME BOMB */
 
 .timebomb-card {
   margin-top: 30px;
@@ -217,40 +219,22 @@ button:active {
 .timebomb-title {
   font-size: 27px;
   font-weight: 900;
-  text-shadow: 0 0 15px rgba(255,100,160,.7);
 }
-
-/* YOUTUBE */
 
 .youtube-under-scripts {
   width: 100%;
   max-width: 420px;
   margin: 25px auto 0;
   display: block;
-
   background: linear-gradient(145deg, #7b1025, #e31b45);
   border-color: #ff7895;
-
-  box-shadow:
-    0 0 12px rgba(255,23,68,.5),
-    0 0 28px rgba(255,23,68,.25);
 }
-
-.youtube-under-scripts:hover {
-  background: linear-gradient(145deg, #e31b45, #ff416c);
-  box-shadow:
-    0 0 15px #ff1744,
-    0 0 35px rgba(255,23,68,.65);
-}
-
-/* YOUTUBE STICKER */
 
 .youtube-sticker {
   margin: 8px auto 20px;
   font-size: 34px;
   letter-spacing: 7px;
   animation: floatSticker 2s ease-in-out infinite;
-  text-shadow: 0 0 15px #ff4d75;
 }
 
 @keyframes floatSticker {
@@ -263,13 +247,9 @@ button:active {
   }
 }
 
-/* PANELS */
-
 .cool-panel,
 .extra-panel,
-.announcements,
-.community-panel,
-.feature-box {
+.announcements {
   margin-top: 24px;
   padding: 20px;
   border: 2px solid #a947d1;
@@ -293,8 +273,6 @@ button:active {
   font-weight: bold;
 }
 
-/* TEAM */
-
 .team-counter {
   margin-top: 25px;
   padding: 20px;
@@ -314,8 +292,6 @@ button:active {
   text-shadow: 0 0 18px #d58aff;
 }
 
-/* FEATURE */
-
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -324,11 +300,8 @@ button:active {
 }
 
 .feature-box {
-  margin-top: 0;
   padding: 15px;
 }
-
-/* ACTIONS */
 
 .action-row {
   display: flex;
@@ -348,8 +321,6 @@ button:active {
   font-weight: bold;
   color: #e3b7ff;
 }
-
-/* MOBILE */
 
 @media (max-width: 500px) {
   .logo {
@@ -393,7 +364,7 @@ button:active {
     class="search"
     id="searchInput"
     oninput="searchScripts()"
-    placeholder="🔎 Search scripts..."
+    placeholder="🔎 Search..."
   >
 
   <div class="filter-row">
@@ -402,9 +373,13 @@ button:active {
     <button onclick="filterScripts('bypass')">BYPASS</button>
   </div>
 
-  <div class="loading" id="loading">Loading...</div>
+  <div class="loading" id="loading">
+    Loading...
+  </div>
 
-  <button onclick="openScript()">⚡ OPEN SCRIPT</button>
+  <button onclick="openScript()">
+    ⚡ OPEN HUB
+  </button>
 
   <button
     class="youtube-under-scripts"
@@ -412,33 +387,40 @@ button:active {
     ▶️ SUBSCRIBE ON YOUTUBE
   </button>
 
-  <!-- STICKERS BELOW YOUTUBE -->
-
   <div class="youtube-sticker">
     🦇 ✨ 🩸 ✨ 🦇
   </div>
 
   <div id="scriptSection">
 
-    <h2>⚔️ DUELS SCRIPT</h2>
+    <h2>⚔️ DUELS HUB</h2>
 
-    <p>A script for the Duels section.</p>
+    <div class="script-card">
+      <h3>⚔️ DUELS</h3>
 
-    <div class="script-box">
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/DuelScripts/Op/refs/heads/main/duels"))()
+      <p>
+        Duels content and updates.
+      </p>
+
+      <div class="script-box">
+        Duels content coming soon.
+      </div>
+
+      <p class="info">
+        ⭐ DUELS · 🆕 UPDATED
+      </p>
+
+      <button
+        onclick="copyText('Duels content coming soon.')">
+        📋 COPY
+      </button>
+
+      <button
+        class="favorite-button"
+        onclick="toggleFavorite(this)">
+        ☆ FAVORITE
+      </button>
     </div>
-
-    <p class="info">
-      ⭐ DUELS SCRIPT · 🆕 UPDATED
-    </p>
-
-    <button id="copyButton" onclick="copyScript()">
-      📋 COPY
-    </button>
-
-    <button class="favorite-button" onclick="toggleFavorite(this)">
-      ☆ FAVORITE
-    </button>
 
     <div class="timebomb-card">
 
@@ -446,13 +428,16 @@ button:active {
         ⏱️💣 TIME BOMB DUELS
       </div>
 
-      <p>A new Duels script.</p>
+      <p>
+        Latest Duels update.
+      </p>
 
       <div class="script-box">
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Timebomb-Duels-Alpha-PhantomX-Hub-227153"))()
+        Time Bomb Duels information coming soon.
       </div>
 
-      <button onclick="copyTimebombScript()">
+      <button
+        onclick="copyText('Time Bomb Duels information coming soon.')">
         📋 COPY
       </button>
 
@@ -470,7 +455,7 @@ button:active {
         🌙 DARK MODE
       </button>
 
-      <button id="copyAllButton" onclick="copyAllScripts()">
+      <button onclick="copyAllScripts()">
         📋 COPY ALL
       </button>
 
@@ -501,21 +486,34 @@ button:active {
       <h2>🧛 NIGHT HUB</h2>
 
       <p>
-        ✨ Explore the hub, discover scripts and stay updated.
+        ✨ Explore the hub and stay updated.
       </p>
 
       <div class="cool-grid">
 
-        <div class="cool-item">⚡ FAST COPY</div>
-        <div class="cool-item">🔥 HOT SCRIPT</div>
-        <div class="cool-item">🆕 NEW DROP</div>
-        <div class="cool-item">🦇 NIGHT MODE</div>
+        <div class="cool-item">
+          ⚡ FAST COPY
+        </div>
+
+        <div class="cool-item">
+          🔥 HOT UPDATE
+        </div>
+
+        <div class="cool-item">
+          🆕 NEW DROP
+        </div>
+
+        <div class="cool-item">
+          🦇 NIGHT MODE
+        </div>
 
       </div>
 
     </div>
 
-    <div class="announcements" id="announcements">
+    <div
+      class="announcements"
+      id="announcements">
 
       <h2>📢 ANNOUNCEMENTS</h2>
 
@@ -527,19 +525,30 @@ button:active {
 
     <div class="extra-panel">
 
-      <h2>🏆 TOP SCRIPTS</h2>
+      <h2>🏆 TOP CONTENT</h2>
 
-      <p>⭐ DUELS SCRIPT</p>
+      <p>⭐ DUELS</p>
       <p>⏱️💣 TIME BOMB DUELS</p>
 
     </div>
 
     <div class="feature-grid">
 
-      <div class="feature-box">⚡ Fast Copy</div>
-      <div class="feature-box">🆕 New Updates</div>
-      <div class="feature-box">⭐ Favorites</div>
-      <div class="feature-box">🧛 Vampire Theme</div>
+      <div class="feature-box">
+        ⚡ Fast Copy
+      </div>
+
+      <div class="feature-box">
+        🆕 New Updates
+      </div>
+
+      <div class="feature-box">
+        ⭐ Favorites
+      </div>
+
+      <div class="feature-box">
+        🧛 Vampire Theme
+      </div>
 
     </div>
 
@@ -559,19 +568,12 @@ button:active {
 
     <div class="extra-panel">
 
-      <h2>🔢 SCRIPT COUNTER</h2>
-
-      <p>2 Scripts Available</p>
-
-    </div>
-
-    <div class="extra-panel">
-
       <h2>🔐 RULES</h2>
 
       <p>
-        Use scripts responsibly and follow the rules
-        of the games and platforms you use.
+        Use the website responsibly and follow
+        the rules of the games and platforms
+        you use.
       </p>
 
     </div>
@@ -599,17 +601,19 @@ button:active {
       </p>
 
       <p id="teamCounter" class="status">
-        👥 Visitors: 0
+        👥 Visitors: Loading...
       </p>
 
     </div>
 
     <div class="team-counter">
 
-      <h2>👥 TEAM ONLINE</h2>
+      <h2>👥 TOTAL VISITORS</h2>
 
-      <div id="teamNumber" class="team-number">
-        0
+      <div
+        id="teamNumber"
+        class="team-number">
+        ...
       </div>
 
       <p>
@@ -618,12 +622,15 @@ button:active {
 
     </div>
 
-    <div class="extra-panel" id="updateBanner">
+    <div
+      class="extra-panel"
+      id="updateBanner">
 
       <h2>🔔 UPDATE</h2>
 
       <p>
-        New features are available on DUELS SCRIPT HUB.
+        New features are available on
+        DUELS SCRIPT HUB.
       </p>
 
       <button onclick="closeUpdate()">
@@ -640,226 +647,142 @@ button:active {
 
 </div>
 
-<script>
 
-function openScript() {
-  document.getElementById("scriptSection").style.display = "block";
-  document.getElementById("loading").style.display = "none";
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  runTransaction,
+  onValue
 }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
-function copyText(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    return navigator.clipboard.writeText(text);
-  }
 
-  const area = document.createElement("textarea");
-  area.value = text;
-  area.style.position = "fixed";
-  area.style.opacity = "0";
+const firebaseConfig = {
 
-  document.body.appendChild(area);
-  area.select();
+  apiKey:
+    "AIzaSyDtUsQBIaxy_DRyCiMbu8jH-9JfyZnDPTU",
 
-  document.execCommand("copy");
+  authDomain:
+    "duels-script.firebaseapp.com",
 
-  area.remove();
+  projectId:
+    "duels-script",
 
-  return Promise.resolve();
-}
+  storageBucket:
+    "duels-script.firebasestorage.app",
 
-function copyScript() {
+  messagingSenderId:
+    "335535098932",
 
-  const script =
-    document.querySelector("#scriptSection > .script-box").innerText;
+  appId:
+    "1:335535098932:web:eb57bf702cd74b65324e61",
 
-  copyText(script);
+  measurementId:
+    "G-CJMN5KNCWM",
 
-  const button =
-    document.getElementById("copyButton");
+  databaseURL:
+    "https://duels-script-default-rtdb.firebaseio.com/"
+};
 
-  button.textContent = "✅ COPIED!";
 
-  setTimeout(() => {
-    button.textContent = "📋 COPY";
-  }, 1500);
-}
+const app =
+  initializeApp(firebaseConfig);
 
-function copyTimebombScript() {
+const database =
+  getDatabase(app);
 
-  const script =
-    document.querySelector(".timebomb-card .script-box").innerText;
 
-  copyText(script);
-}
+/* REAL GLOBAL VISITORS */
 
-function copyAllScripts() {
+const visitorsRef =
+  ref(database, "visitors");
 
-  const scripts =
-    [...document.querySelectorAll(".script-box")]
-      .map(x => x.innerText)
-      .join("\n\n");
 
-  copyText(scripts);
+runTransaction(
+  visitorsRef,
+  (current) => {
 
-  const button =
-    document.getElementById("copyAllButton");
-
-  button.textContent = "✅ COPIED!";
-
-  setTimeout(() => {
-    button.textContent = "📋 COPY ALL";
-  }, 1500);
-}
-
-function toggleFavorite(button) {
-
-  if (button.textContent.includes("☆")) {
-    button.textContent = "★ FAVORITED";
-  } else {
-    button.textContent = "☆ FAVORITE";
-  }
-
-}
-
-function toggleDarkMode() {
-
-  document.body.classList.toggle("dark");
-
-}
-
-function searchScripts() {
-
-  const query =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase();
-
-  const section =
-    document.getElementById("scriptSection");
-
-  if (!section) return;
-
-  [...section.querySelectorAll(".script-box, h2")]
-    .forEach(el => {
-
-      el.style.display =
-        !query ||
-        el.innerText.toLowerCase().includes(query)
-          ? ""
-          : "none";
-
-    });
-}
-
-function filterScripts(type) {
-
-  const title =
-    document.querySelector("#scriptSection > h2");
-
-  if (!title) return;
-
-  title.style.display =
-    type === "bypass"
-      ? "none"
-      : "";
-
-}
-
-function openDiscord() {
-
-  window.open(
-    "https://discord.gg/sHvaKKNyR",
-    "_blank"
-  );
-
-}
-
-function openYouTube() {
-
-  window.open(
-    "https://www.youtube.com/@ryxon_rbx",
-    "_blank"
-  );
-
-}
-
-function openGamePass() {
-
-  window.open(
-    "https://www.roblox.com/game-pass/1963536489",
-    "_blank"
-  );
-
-}
-
-function goHome() {
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-function showUpdates() {
-
-  document
-    .getElementById("announcements")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-
-}
-
-function sharePage() {
-
-  if (navigator.share) {
-
-    navigator.share({
-      title: "DUELS SCRIPT HUB",
-      url: window.location.href
-    });
-
-  } else {
-
-    copyText(window.location.href);
-
-    alert("Page link copied!");
+    return (current || 0) + 1;
 
   }
+)
+.then(() => {
 
-}
+  onValue(
+    visitorsRef,
+    (snapshot) => {
 
-function goTop() {
+      const count =
+        snapshot.val() || 0;
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+      const counter =
+        document.getElementById(
+          "teamCounter"
+        );
 
-}
+      const number =
+        document.getElementById(
+          "teamNumber"
+        );
 
-function closeUpdate() {
+      if (counter) {
 
-  document
-    .getElementById("updateBanner")
-    .style.display = "none";
+        counter.textContent =
+          "👥 Visitors: " + count;
 
-}
+      }
+
+      if (number) {
+
+        number.textContent =
+          count;
+
+      }
+
+    }
+  );
+
+})
+.catch((error) => {
+
+  console.error(
+    "Firebase error:",
+    error
+  );
+
+  document.getElementById(
+    "teamCounter"
+  ).textContent =
+    "👥 Visitors: unavailable";
+
+  document.getElementById(
+    "teamNumber"
+  ).textContent =
+    "—";
+
+});
 
 
-/* LOCAL VIEW COUNTER */
+/* LOCAL VIEWS */
 
 let views =
   Number(
-    localStorage.getItem("scriptHubViews") || 0
+    localStorage.getItem(
+      "scriptHubViews"
+    ) || 0
   ) + 1;
+
 
 localStorage.setItem(
   "scriptHubViews",
   views
 );
+
 
 document.getElementById(
   "viewCounter"
@@ -867,27 +790,278 @@ document.getElementById(
   "👁️ Views: " + views;
 
 
-/* LOCAL VISITOR COUNTER */
+/* OPEN HUB */
 
-let teamVisitors =
-  Number(
-    localStorage.getItem("scriptHubTeamVisitors") || 0
-  ) + 1;
+window.openScript = function() {
 
-localStorage.setItem(
-  "scriptHubTeamVisitors",
-  teamVisitors
-);
+  document.getElementById(
+    "scriptSection"
+  ).style.display = "block";
 
-document.getElementById(
-  "teamCounter"
-).textContent =
-  "👥 Visitors: " + teamVisitors;
+  document.getElementById(
+    "loading"
+  ).style.display = "none";
 
-document.getElementById(
-  "teamNumber"
-).textContent =
-  teamVisitors;
+};
+
+
+/* COPY */
+
+window.copyText = function(text) {
+
+  if (
+    navigator.clipboard &&
+    window.isSecureContext
+  ) {
+
+    navigator.clipboard.writeText(text);
+
+  } else {
+
+    const area =
+      document.createElement(
+        "textarea"
+      );
+
+    area.value = text;
+
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+
+    document.body.appendChild(area);
+
+    area.select();
+
+    document.execCommand("copy");
+
+    area.remove();
+
+  }
+
+};
+
+
+/* COPY ALL */
+
+window.copyAllScripts = function() {
+
+  const scripts =
+    [
+      ...document.querySelectorAll(
+        ".script-box"
+      )
+    ]
+    .map(
+      x => x.innerText
+    )
+    .join("\n\n");
+
+  copyText(scripts);
+
+  alert("✅ Copied!");
+
+};
+
+
+/* FAVORITE */
+
+window.toggleFavorite = function(button) {
+
+  if (
+    button.textContent.includes("☆")
+  ) {
+
+    button.textContent =
+      "★ FAVORITED";
+
+  } else {
+
+    button.textContent =
+      "☆ FAVORITE";
+
+  }
+
+};
+
+
+/* DARK MODE */
+
+window.toggleDarkMode = function() {
+
+  document.body.classList.toggle(
+    "dark"
+  );
+
+};
+
+
+/* SEARCH */
+
+window.searchScripts = function() {
+
+  const query =
+    document.getElementById(
+      "searchInput"
+    ).value.toLowerCase();
+
+  const cards =
+    document.querySelectorAll(
+      ".script-card, .timebomb-card"
+    );
+
+  cards.forEach(card => {
+
+    card.style.display =
+      !query ||
+      card.innerText
+        .toLowerCase()
+        .includes(query)
+        ? ""
+        : "none";
+
+  });
+
+};
+
+
+/* FILTER */
+
+window.filterScripts = function(type) {
+
+  const cards =
+    document.querySelectorAll(
+      ".script-card, .timebomb-card"
+    );
+
+  cards.forEach(card => {
+
+    if (type === "all") {
+
+      card.style.display = "";
+
+    } else if (type === "duels") {
+
+      card.style.display =
+        card.classList.contains(
+          "script-card"
+        )
+        ? ""
+        : "none";
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+};
+
+
+/* YOUTUBE */
+
+window.openYouTube = function() {
+
+  window.open(
+    "https://www.youtube.com/@ryxon_rbx",
+    "_blank"
+  );
+
+};
+
+
+/* GAME PASS */
+
+window.openGamePass = function() {
+
+  window.open(
+    "https://www.roblox.com/game-pass/1963536489",
+    "_blank"
+  );
+
+};
+
+
+/* HOME */
+
+window.goHome = function() {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+};
+
+
+/* UPDATES */
+
+window.showUpdates = function() {
+
+  document
+    .getElementById(
+      "announcements"
+    )
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+};
+
+
+/* SHARE */
+
+window.sharePage = function() {
+
+  if (navigator.share) {
+
+    navigator.share({
+
+      title:
+        "DUELS SCRIPT HUB",
+
+      url:
+        window.location.href
+
+    });
+
+  } else {
+
+    copyText(
+      window.location.href
+    );
+
+    alert(
+      "Page link copied!"
+    );
+
+  }
+
+};
+
+
+/* TOP */
+
+window.goTop = function() {
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+};
+
+
+/* CLOSE UPDATE */
+
+window.closeUpdate = function() {
+
+  document.getElementById(
+    "updateBanner"
+  ).style.display = "none";
+
+};
 
 </script>
 

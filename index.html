@@ -74,9 +74,7 @@ body::after {
   border: 2px solid #c86cff;
   border-radius: 20px;
   background: rgba(30,0,45,.75);
-  box-shadow:
-    0 0 15px #9b35d0,
-    inset 0 0 20px rgba(190,70,255,.2);
+  box-shadow: 0 0 15px #9b35d0;
   font-size: 38px;
   animation: glow 2s infinite alternate;
 }
@@ -85,24 +83,25 @@ body::after {
   from {
     box-shadow: 0 0 12px #8b27bd;
   }
-
   to {
     box-shadow: 0 0 32px #d05cff;
   }
+}
+
+.vampire-card,
+.cool-panel,
+.extra-panel,
+.announcements {
+  border: 2px solid #a947d1;
+  border-radius: 20px;
+  background: rgba(25,0,40,.75);
+  box-shadow: 0 0 20px rgba(180,92,255,.25);
 }
 
 .vampire-card {
   margin: 18px auto;
   padding: 20px;
   max-width: 500px;
-  border: 2px solid #b45cff;
-  border-radius: 22px;
-  background: linear-gradient(
-    145deg,
-    rgba(40,0,60,.95),
-    rgba(90,5,110,.65)
-  );
-  box-shadow: 0 0 28px rgba(190,70,255,.45);
 }
 
 .sticker {
@@ -119,7 +118,6 @@ body::after {
   outline: none;
   background: #16001f;
   color: white;
-  box-shadow: 0 0 12px rgba(180,92,255,.35);
 }
 
 .search::placeholder {
@@ -136,18 +134,12 @@ button {
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow:
-    0 0 8px rgba(180,92,255,.35),
-    inset 0 0 10px rgba(255,255,255,.04);
   transition: .2s;
 }
 
 button:hover {
   transform: translateY(-2px) scale(1.03);
   background: linear-gradient(145deg, #64147c, #941cc0);
-  box-shadow:
-    0 0 12px #d05cff,
-    0 0 28px rgba(208,92,255,.55);
 }
 
 button:active {
@@ -221,11 +213,22 @@ button:active {
   font-weight: 900;
 }
 
+.discord-under-youtube,
 .youtube-under-scripts {
   width: 100%;
   max-width: 420px;
-  margin: 25px auto 0;
+  margin: 10px auto 0;
   display: block;
+}
+
+.discord-under-youtube {
+  background: linear-gradient(145deg, #3b238f, #5865f2);
+  border-color: #8f9bff;
+  box-shadow: 0 0 15px rgba(88,101,242,.5);
+}
+
+.youtube-under-scripts {
+  margin-top: 10px;
   background: linear-gradient(145deg, #7b1025, #e31b45);
   border-color: #ff7895;
 }
@@ -241,7 +244,6 @@ button:active {
   0%,100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-5px);
   }
@@ -252,10 +254,6 @@ button:active {
 .announcements {
   margin-top: 24px;
   padding: 20px;
-  border: 2px solid #a947d1;
-  border-radius: 20px;
-  background: rgba(25,0,40,.75);
-  box-shadow: 0 0 20px rgba(180,92,255,.25);
 }
 
 .cool-grid {
@@ -301,6 +299,9 @@ button:active {
 
 .feature-box {
   padding: 15px;
+  border: 2px solid #a947d1;
+  border-radius: 20px;
+  background: rgba(25,0,40,.75);
 }
 
 .action-row {
@@ -381,6 +382,14 @@ button:active {
     ⚡ OPEN HUB
   </button>
 
+  <!-- DISCORD ABOVE YOUTUBE -->
+
+  <button
+    class="discord-under-youtube"
+    onclick="openDiscord()">
+    💬 JOIN DISCORD
+  </button>
+
   <button
     class="youtube-under-scripts"
     onclick="openYouTube()">
@@ -396,22 +405,22 @@ button:active {
     <h2>⚔️ DUELS HUB</h2>
 
     <div class="script-card">
-      <h3>⚔️ DUELS</h3>
+
+      <h3>⚔️ DUELS SCRIPT</h3>
 
       <p>
-        Duels content and updates.
+        loadstring(game:HttpGet("https://orrxl4-protector.com/api/raw?id=adrjbcpp"))()
       </p>
 
       <div class="script-box">
-        loadstring(game:HttpGet("https://orrxl4-protector.com/api/raw?id=adrjbcpp"))()
+        DUELS SCRIPT CONTENT
       </div>
 
       <p class="info">
-        ⭐ DUELS · 🆕 UPDATED
+        ⭐ DUELS SCRIPT · 🆕 UPDATED
       </p>
 
-      <button
-        onclick="copyText('Duels content coming soon.')">
+      <button onclick="copyText('DUELS SCRIPT CONTENT')">
         📋 COPY
       </button>
 
@@ -420,6 +429,7 @@ button:active {
         onclick="toggleFavorite(this)">
         ☆ FAVORITE
       </button>
+
     </div>
 
     <div class="timebomb-card">
@@ -429,15 +439,14 @@ button:active {
       </div>
 
       <p>
-        Latest Duels update.
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Timebomb-Duels-Alpha-PhantomX-Hub-227153"))()
       </p>
 
       <div class="script-box">
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Timebomb-Duels-Alpha-PhantomX-Hub-227153"))()
+        TIME BOMB SCRIPT CONTENT
       </div>
 
-      <button
-        onclick="copyText('Time Bomb Duels information coming soon.')">
+      <button onclick="copyText('TIME BOMB SCRIPT CONTENT')">
         📋 COPY
       </button>
 
@@ -491,21 +500,10 @@ button:active {
 
       <div class="cool-grid">
 
-        <div class="cool-item">
-          ⚡ FAST COPY
-        </div>
-
-        <div class="cool-item">
-          🔥 HOT UPDATE
-        </div>
-
-        <div class="cool-item">
-          🆕 NEW DROP
-        </div>
-
-        <div class="cool-item">
-          🦇 NIGHT MODE
-        </div>
+        <div class="cool-item">⚡ FAST COPY</div>
+        <div class="cool-item">🔥 HOT UPDATE</div>
+        <div class="cool-item">🆕 NEW DROP</div>
+        <div class="cool-item">🦇 NIGHT MODE</div>
 
       </div>
 
@@ -527,7 +525,7 @@ button:active {
 
       <h2>🏆 TOP CONTENT</h2>
 
-      <p>⭐ DUELS</p>
+      <p>⭐ DUELS SCRIPT</p>
       <p>⏱️💣 TIME BOMB DUELS</p>
 
     </div>
@@ -583,8 +581,13 @@ button:active {
       <h2>📞 CONTACT</h2>
 
       <p>
-        For questions or updates, join the Discord server.
+        Join our Discord server for questions
+        and updates.
       </p>
+
+      <button onclick="openDiscord()">
+        💬 OPEN DISCORD
+      </button>
 
     </div>
 
@@ -647,7 +650,6 @@ button:active {
 
 </div>
 
-
 <script type="module">
 
 import { initializeApp }
@@ -697,7 +699,7 @@ const database =
   getDatabase(app);
 
 
-/* REAL GLOBAL VISITORS */
+/* REAL GLOBAL VISITOR COUNTER */
 
 const visitorsRef =
   ref(database, "visitors");
@@ -705,7 +707,7 @@ const visitorsRef =
 
 runTransaction(
   visitorsRef,
-  (current) => {
+  current => {
 
     return (current || 0) + 1;
 
@@ -715,40 +717,26 @@ runTransaction(
 
   onValue(
     visitorsRef,
-    (snapshot) => {
+    snapshot => {
 
       const count =
         snapshot.val() || 0;
 
-      const counter =
-        document.getElementById(
-          "teamCounter"
-        );
+      document.getElementById(
+        "teamCounter"
+      ).textContent =
+        "👥 Visitors: " + count;
 
-      const number =
-        document.getElementById(
-          "teamNumber"
-        );
-
-      if (counter) {
-
-        counter.textContent =
-          "👥 Visitors: " + count;
-
-      }
-
-      if (number) {
-
-        number.textContent =
-          count;
-
-      }
+      document.getElementById(
+        "teamNumber"
+      ).textContent =
+        count;
 
     }
   );
 
 })
-.catch((error) => {
+.catch(error => {
 
   console.error(
     "Firebase error:",
@@ -777,12 +765,10 @@ let views =
     ) || 0
   ) + 1;
 
-
 localStorage.setItem(
   "scriptHubViews",
   views
 );
-
 
 document.getElementById(
   "viewCounter"
@@ -955,6 +941,18 @@ window.filterScripts = function(type) {
     }
 
   });
+
+};
+
+
+/* DISCORD */
+
+window.openDiscord = function() {
+
+  window.open(
+    "https://discord.gg/Z7phAABJb",
+    "_blank"
+  );
 
 };
 

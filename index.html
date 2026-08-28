@@ -1,1067 +1,607 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DUELS SCRIPT HUB</title>
+<title>DUELS SCRIPT HUB</title><style>
+*{box-sizing:border-box}
 
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+body{
+  margin:0;
+  min-height:100vh;
   background:
-    radial-gradient(circle at top, #65158c 0%, transparent 35%),
-    linear-gradient(135deg, #09000f, #21002f, #08000d);
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
+    radial-gradient(circle at top,#65158c 0%,transparent 35%),
+    linear-gradient(135deg,#09000f,#21002f,#08000d);
+  color:white;
+  font-family:Arial,sans-serif;
+  transition:.3s;
 }
 
-body::before {
-  content: "🧛 🦇 🩸 🦇 🧛 🦇 🩸 🦇";
-  position: fixed;
-  top: 8px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 27px;
-  letter-spacing: 10px;
-  opacity: .75;
-  pointer-events: none;
+body.dark{
+  background:
+    radial-gradient(circle at top,#160020 0%,transparent 35%),
+    linear-gradient(135deg,#020006,#09000d,#000);
 }
 
-body::after {
-  content: "🦇   🩸   🦇   🧛   🦇   🩸   🦇";
-  position: fixed;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 23px;
-  letter-spacing: 7px;
-  opacity: .55;
-  pointer-events: none;
+body::before{
+  content:"🧛 🦇 🩸 🦇 🧛 🦇 🩸 🦇";
+  position:fixed;
+  top:8px;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:27px;
+  letter-spacing:10px;
+  opacity:.7;
+  pointer-events:none;
 }
 
-.container {
-  width: 94%;
-  max-width: 650px;
-  text-align: center;
-  padding: 55px 0 70px;
-  position: relative;
-  z-index: 2;
+.container{
+  width:94%;
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+  padding:55px 0 80px;
+  position:relative;
+  z-index:2;
 }
 
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  text-shadow:
-    0 0 8px #d58aff,
-    0 0 25px #9b35d0;
-  margin-bottom: 20px;
+.logo{
+  font-size:30px;
+  font-weight:900;
+  text-shadow:0 0 10px #d58aff,0 0 28px #9b35d0;
+  margin-bottom:20px;
 }
 
-.vampire-banner {
-  margin: 10px auto 25px;
-  padding: 15px;
-  border: 2px solid #c86cff;
-  border-radius: 20px;
-  background: rgba(30,0,45,.75);
-  box-shadow: 0 0 15px #9b35d0;
-  font-size: 38px;
-  animation: glow 2s infinite alternate;
+.banner{
+  padding:18px;
+  margin:15px auto 25px;
+  border:2px solid #c86cff;
+  border-radius:20px;
+  background:rgba(30,0,45,.8);
+  box-shadow:0 0 20px #9b35d0;
+  font-size:38px;
+  animation:glow 2s infinite alternate;
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 12px #8b27bd;
-  }
-  to {
-    box-shadow: 0 0 32px #d05cff;
-  }
+@keyframes glow{
+  from{box-shadow:0 0 12px #8b27bd}
+  to{box-shadow:0 0 35px #d05cff}
 }
 
-.vampire-card,
-.cool-panel,
-.extra-panel,
-.announcements {
-  border: 2px solid #a947d1;
-  border-radius: 20px;
-  background: rgba(25,0,40,.75);
-  box-shadow: 0 0 20px rgba(180,92,255,.25);
+.card{
+  margin:20px auto;
+  padding:20px;
+  border:2px solid #a947d1;
+  border-radius:20px;
+  background:rgba(25,0,40,.78);
+  box-shadow:0 0 20px rgba(180,92,255,.25);
 }
 
-.vampire-card {
-  margin: 18px auto;
-  padding: 20px;
-  max-width: 500px;
+.search{
+  width:90%;
+  padding:14px;
+  margin:12px;
+  border:2px solid #b45cff;
+  border-radius:12px;
+  background:#16001f;
+  color:white;
+  outline:none;
 }
 
-.sticker {
-  font-size: 50px;
+.search::placeholder{color:#dcb5ed}
+
+button{
+  padding:12px 20px;
+  margin:5px;
+  border:2px solid #b45cff;
+  border-radius:12px;
+  background:linear-gradient(145deg,#351047,#64147c);
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
 }
 
-.search {
-  width: 90%;
-  max-width: 420px;
-  padding: 13px 16px;
-  margin: 15px auto;
-  border: 2px solid #b45cff;
-  border-radius: 12px;
-  outline: none;
-  background: #16001f;
-  color: white;
+button:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 0 20px #d05cff;
 }
 
-.search::placeholder {
-  color: #dcb5ed;
+.filter-row{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:5px;
 }
 
-button {
-  padding: 12px 24px;
-  margin: 5px;
-  border: 2px solid #b45cff;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #351047, #64147c);
-  color: white;
-  font-size: 15px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: .2s;
+.script-card{
+  margin:15px 0;
+  padding:18px;
+  border:2px solid #b45cff;
+  border-radius:18px;
+  background:#130019;
+  text-align:left;
 }
 
-button:hover {
-  transform: translateY(-2px) scale(1.03);
-  background: linear-gradient(145deg, #64147c, #941cc0);
+.script-card h3{
+  margin-top:0;
 }
 
-button:active {
-  transform: scale(.97);
+.script-box{
+  padding:14px;
+  border-radius:10px;
+  background:#09000d;
+  color:#e8c8ff;
+  border:1px solid #8d42b5;
 }
 
-.filter-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 12px 0;
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.filter-row button {
-  padding: 9px 15px;
-  font-size: 13px;
+.stat{
+  padding:16px 8px;
+  border:1px solid #b45cff;
+  border-radius:14px;
+  background:rgba(60,0,80,.6);
 }
 
-#scriptSection {
-  display: none;
-  margin-top: 25px;
+.stat-number{
+  display:block;
+  font-size:30px;
+  font-weight:900;
+  text-shadow:0 0 12px #d58aff;
 }
 
-.script-card {
-  margin: 18px auto;
-  padding: 20px;
-  max-width: 520px;
-  border: 2px solid #b45cff;
-  border-radius: 18px;
-  background: #130019;
-  box-shadow: 0 0 18px rgba(160,70,220,.35);
+.online{
+  color:#72ff9b;
+  font-weight:900;
 }
 
-.script-box {
-  padding: 18px;
-  border: 2px solid #b45cff;
-  border-radius: 13px;
-  background: #130019;
-  color: #f1d9ff;
-  max-width: 520px;
-  margin: auto;
-  word-break: break-word;
+.notification{
+  margin:20px 0;
+  padding:15px;
+  border:2px solid #ff5c9b;
+  border-radius:15px;
+  background:rgba(90,5,50,.7);
+  animation:pulse 2s infinite;
 }
 
-.info {
-  font-size: 14px;
-  color: #dfb7f2;
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.02)}
 }
 
-.favorite-button {
-  font-size: 13px;
-  padding: 9px 15px;
+.discord{
+  background:linear-gradient(145deg,#5865f2,#7289da);
+  border-color:#9aa5ff;
 }
 
-.timebomb-card {
-  margin-top: 30px;
-  padding: 20px;
-  border: 2px solid #ff5c8a;
-  border-radius: 20px;
-  background: linear-gradient(
-    145deg,
-    rgba(45,0,25,.95),
-    rgba(95,10,55,.75)
-  );
-  box-shadow: 0 0 25px rgba(255,70,130,.35);
+.youtube{
+  background:linear-gradient(145deg,#9b1028,#ed1b45);
+  border-color:#ff7895;
 }
 
-.timebomb-title {
-  font-size: 27px;
-  font-weight: 900;
+.live-dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#39ff72;
+  box-shadow:0 0 10px #39ff72;
+  margin-right:6px;
 }
 
-.discord-under-youtube,
-.youtube-under-scripts {
-  width: 100%;
-  max-width: 420px;
-  margin: 10px auto 0;
-  display: block;
+.favorite{
+  font-size:13px;
 }
 
-.discord-under-youtube {
-  background: linear-gradient(145deg, #3b238f, #5865f2);
-  border-color: #8f9bff;
-  box-shadow: 0 0 15px rgba(88,101,242,.5);
+.top-script{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  margin:8px 0;
+  border:1px solid #9f50c0;
+  border-radius:12px;
+  background:rgba(60,0,80,.5);
 }
 
-.youtube-under-scripts {
-  margin-top: 10px;
-  background: linear-gradient(145deg, #7b1025, #e31b45);
-  border-color: #ff7895;
+.footer{
+  margin-top:30px;
+  opacity:.7;
+  font-size:13px;
 }
 
-.youtube-sticker {
-  margin: 8px auto 20px;
-  font-size: 34px;
-  letter-spacing: 7px;
-  animation: floatSticker 2s ease-in-out infinite;
+@media(max-width:500px){
+  .logo{font-size:25px}
+  .banner{font-size:30px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  button{font-size:13px;padding:10px 15px}
 }
-
-@keyframes floatSticker {
-  0%,100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.cool-panel,
-.extra-panel,
-.announcements {
-  margin-top: 24px;
-  padding: 20px;
-}
-
-.cool-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.cool-item {
-  padding: 13px 8px;
-  border: 1px solid #b45cff;
-  border-radius: 12px;
-  background: rgba(60,0,80,.65);
-  font-weight: bold;
-}
-
-.team-counter {
-  margin-top: 25px;
-  padding: 20px;
-  border: 2px solid #d58aff;
-  border-radius: 20px;
-  background: linear-gradient(
-    145deg,
-    rgba(30,0,45,.95),
-    rgba(80,5,95,.75)
-  );
-  box-shadow: 0 0 25px rgba(190,70,255,.35);
-}
-
-.team-number {
-  font-size: 42px;
-  font-weight: 900;
-  text-shadow: 0 0 18px #d58aff;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 12px;
-  margin-top: 25px;
-}
-
-.feature-box {
-  padding: 15px;
-  border: 2px solid #a947d1;
-  border-radius: 20px;
-  background: rgba(25,0,40,.75);
-}
-
-.action-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 20px;
-}
-
-.status {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.loading {
-  margin: 15px;
-  font-weight: bold;
-  color: #e3b7ff;
-}
-
-@media (max-width: 500px) {
-  .logo {
-    font-size: 25px;
-  }
-
-  .vampire-banner {
-    font-size: 30px;
-  }
-
-  .cool-grid,
-  .feature-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  button {
-    font-size: 13px;
-    padding: 11px 17px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <div class="logo">DUELS SCRIPT HUB</div>
-
-  <div class="vampire-banner">
-    🧛🏻‍♂️ 🦇 🩸 🦇 🧛🏻‍♀️
-  </div>
-
-  <div class="vampire-card">
-    <div class="sticker">🧛🏻‍♂️🦇🩸</div>
-    <h2>WELCOME TO THE NIGHT</h2>
-    <p>Explore the hub and check the latest updates.</p>
-  </div>
-
-  <input
-    class="search"
-    id="searchInput"
-    oninput="searchScripts()"
-    placeholder="🔎 Search..."
-  >
-
-  <div class="filter-row">
-    <button onclick="filterScripts('all')">ALL</button>
-    <button onclick="filterScripts('duels')">DUELS</button>
-    <button onclick="filterScripts('bypass')">BYPASS</button>
-  </div>
-
-  <div class="loading" id="loading">
-    Loading...
-  </div>
-
-  <button onclick="openScript()">
-    ⚡ OPEN HUB
-  </button>
-
-  <!-- DISCORD ABOVE YOUTUBE -->
-
-  <button
-    class="discord-under-youtube"
-    onclick="openDiscord()">
-    💬 JOIN DISCORD
-  </button>
-
-  <button
-    class="youtube-under-scripts"
-    onclick="openYouTube()">
-    ▶️ SUBSCRIBE ON YOUTUBE
-  </button>
-
-  <div class="youtube-sticker">
-    🦇 ✨ 🩸 ✨ 🦇
-  </div>
-
-  <div id="scriptSection">
-
-    <h2>⚔️ DUELS HUB</h2>
-
-    <div class="script-card">
-
-      <h3>⚔️ DUELS SCRIPT</h3>
-
-      <p>
-        loadstring(game:HttpGet("https://orrxl4-protector.com/api/raw?id=adrjbcpp"))()
-      </p>
-
-      <div class="script-box">
-        DUELS SCRIPT CONTENT
-      </div>
-
-      <p class="info">
-        ⭐ DUELS SCRIPT · 🆕 UPDATED
-      </p>
-
-      <button onclick="copyText('DUELS SCRIPT CONTENT')">
-        📋 COPY
-      </button>
-
-      <button
-        class="favorite-button"
-        onclick="toggleFavorite(this)">
-        ☆ FAVORITE
-      </button>
-
-    </div>
-
-    <div class="timebomb-card">
-
-      <div class="timebomb-title">
-        ⏱️💣 TIME BOMB DUELS
-      </div>
-
-      <p>
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Timebomb-Duels-Alpha-PhantomX-Hub-227153"))()
-      </p>
-
-      <div class="script-box">
-        TIME BOMB SCRIPT CONTENT
-      </div>
-
-      <button onclick="copyText('TIME BOMB SCRIPT CONTENT')">
-        📋 COPY
-      </button>
-
-      <button
-        class="favorite-button"
-        onclick="toggleFavorite(this)">
-        ☆ FAVORITE
-      </button>
-
-    </div>
-
-    <div class="action-row">
-
-      <button onclick="toggleDarkMode()">
-        🌙 DARK MODE
-      </button>
-
-      <button onclick="copyAllScripts()">
-        📋 COPY ALL
-      </button>
-
-      <button onclick="goHome()">
-        🏠 HOME
-      </button>
-
-      <button onclick="showUpdates()">
-        🆕 UPDATES
-      </button>
-
-      <button onclick="alert('Favorites coming soon!')">
-        ⭐ FAVORITES
-      </button>
-
-      <button onclick="sharePage()">
-        🔗 SHARE
-      </button>
-
-      <button onclick="location.reload()">
-        🔄 REFRESH
-      </button>
-
-    </div>
-
-    <div class="cool-panel">
-
-      <h2>🧛 NIGHT HUB</h2>
-
-      <p>
-        ✨ Explore the hub and stay updated.
-      </p>
-
-      <div class="cool-grid">
-
-        <div class="cool-item">⚡ FAST COPY</div>
-        <div class="cool-item">🔥 HOT UPDATE</div>
-        <div class="cool-item">🆕 NEW DROP</div>
-        <div class="cool-item">🦇 NIGHT MODE</div>
-
-      </div>
-
-    </div>
-
-    <div
-      class="announcements"
-      id="announcements">
-
-      <h2>📢 ANNOUNCEMENTS</h2>
-
-      <p>
-        Welcome to DUELS SCRIPT HUB!
-      </p>
-
-    </div>
-
-    <div class="extra-panel">
-
-      <h2>🏆 TOP CONTENT</h2>
-
-      <p>⭐ DUELS SCRIPT</p>
-      <p>⏱️💣 TIME BOMB DUELS</p>
-
-    </div>
-
-    <div class="feature-grid">
-
-      <div class="feature-box">
-        ⚡ Fast Copy
-      </div>
-
-      <div class="feature-box">
-        🆕 New Updates
-      </div>
-
-      <div class="feature-box">
-        ⭐ Favorites
-      </div>
-
-      <div class="feature-box">
-        🧛 Vampire Theme
-      </div>
-
-    </div>
-
-    <div class="extra-panel">
-
-      <h2>🎟️ GAME PASS</h2>
-
-      <p>
-        Game Pass ID: 1963536489
-      </p>
-
-      <button onclick="openGamePass()">
-        💰 BUY GAME PASS
-      </button>
-
-    </div>
-
-    <div class="extra-panel">
-
-      <h2>🔐 RULES</h2>
-
-      <p>
-        Use the website responsibly and follow
-        the rules of the games and platforms
-        you use.
-      </p>
-
-    </div>
-
-    <div class="extra-panel">
-
-      <h2>📞 CONTACT</h2>
-
-      <p>
-        Join our Discord server for questions
-        and updates.
-      </p>
-
-      <button onclick="openDiscord()">
-        💬 OPEN DISCORD
-      </button>
-
-    </div>
-
-    <div class="extra-panel">
-
-      <h2>📈 STATUS</h2>
-
-      <p class="status">
-        🟢 WEBSITE ONLINE
-      </p>
-
-      <p id="viewCounter" class="status">
-        👁️ Views: 0
-      </p>
-
-      <p id="teamCounter" class="status">
-        👥 Visitors: Loading...
-      </p>
-
-    </div>
-
-    <div class="team-counter">
-
-      <h2>👥 TOTAL VISITORS</h2>
-
-      <div
-        id="teamNumber"
-        class="team-number">
-        ...
-      </div>
-
-      <p>
-        People have visited the hub
-      </p>
-
-    </div>
-
-    <div
-      class="extra-panel"
-      id="updateBanner">
-
-      <h2>🔔 UPDATE</h2>
-
-      <p>
-        New features are available on
-        DUELS SCRIPT HUB.
-      </p>
-
-      <button onclick="closeUpdate()">
-        CLOSE
-      </button>
-
-    </div>
-
-    <button onclick="goTop()">
-      ⬆️ BACK TO TOP
-    </button>
-
-  </div>
-
-</div>
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+</style></head><body><div class="container"><div class="logo">DUELS SCRIPT HUB</div><div class="banner">
+🧛🏻‍♂️ 🦇 🩸 🦇 🧛🏻‍♀️
+</div><div class="card">
+<div style="font-size:50px">🧛🏻‍♂️🦇🩸</div>
+<h2>WELCOME TO THE NIGHT</h2>
+<p>Explore the hub and stay updated.</p>
+</div><div class="notification">
+🔔 <b>NEW UPDATE!</b><br>
+New features have been added to the hub.
+</div><input
+class="search"
+id="searchInput"
+placeholder="🔎 Search scripts..."
+oninput="searchScripts()"
+
+«»
+
+<div class="filter-row">
+<button onclick="filterScripts('all')">ALL</button>
+<button onclick="filterScripts('duels')">DUELS</button>
+<button onclick="filterScripts('timebomb')">TIME BOMB</button>
+</div><div class="card"><h2>📊 STATISTICS</h2><div class="stats-grid"><div class="stat">
+<span id="visitorCount" class="stat-number">...</span>
+👥 Total Visitors
+</div><div class="stat">
+<span id="onlineCount" class="stat-number">...</span>
+<span class="online">
+<span class="live-dot"></span>Live Online
+</span>
+</div><div class="stat">
+<span id="copyCount" class="stat-number">0</span>
+📋 Copies
+</div><div class="stat">
+<span class="stat-number">2</span>
+📜 Scripts
+</div></div>
+</div><div class="card"><h2>🌐 COMMUNITY</h2><button
+class="discord"
+onclick="openDiscord()">
+💬 JOIN DISCORD
+</button>
+
+<button
+class="youtube"
+onclick="openYouTube()">
+▶️ YOUTUBE
+</button>
+
+</div><div class="card"><h2>⚡ SCRIPT HUB</h2><div id="scriptList"><div class="script-card" data-type="duels"><h3>⚔️ DUELS</h3><p>
+Duels script information.
+</p><div class="script-box">
+Script information / safe placeholder
+</div><button onclick="copyInfo(this)">
+📋 COPY INFO
+</button><button
+class="favorite"
+onclick="toggleFavorite(this)">
+☆ FAVORITE
+</button>
+
+</div><div class="script-card" data-type="timebomb"><h3>⏱️💣 TIME BOMB DUELS</h3><p>
+Time Bomb Duels information.
+</p><div class="script-box">
+Script information / safe placeholder
+</div><button onclick="copyInfo(this)">
+📋 COPY INFO
+</button><button
+class="favorite"
+onclick="toggleFavorite(this)">
+☆ FAVORITE
+</button>
+
+</div></div>
+</div><div class="card"><h2>🏆 TOP SCRIPTS</h2><div class="top-script">
+<span>🥇 DUELS</span>
+<span>🔥 Popular</span>
+</div><div class="top-script">
+<span>🥈 TIME BOMB</span>
+<span>🆕 New</span>
+</div></div><div class="card"><h2>🟢 WEBSITE STATUS</h2><p>
+<span class="live-dot"></span>
+<b>WEBSITE ONLINE</b>
+</p><p>
+Firebase Database:
+<b id="firebaseStatus">Connecting...</b>
+</p><p id="lastUpdate">
+🕒 Last update: —
+</p></div><div class="card"><h2>🌙 NIGHT MODE</h2><button onclick="toggleDarkMode()">
+🌙 TOGGLE NIGHT MODE
+</button><button onclick="goTop()">
+⬆️ BACK TO TOP
+</button></div><div class="card"><h2>📢 ANNOUNCEMENTS</h2><p>
+Welcome to DUELS SCRIPT HUB!
+</p><p>
+✨ More updates coming soon.
+</p></div><div class="footer">
+🦇 DUELS SCRIPT HUB · NIGHT EDITION 🩸
+</div></div><script type="module">
 
 import {
-  getDatabase,
-  ref,
-  runTransaction,
-  onValue
-}
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+import {
+getDatabase,
+ref,
+runTransaction,
+onValue,
+onDisconnect,
+set
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
 
-const firebaseConfig = {
+const firebaseConfig={
 
-  apiKey:
-    "AIzaSyDtUsQBIaxy_DRyCiMbu8jH-9JfyZnDPTU",
+apiKey:
+"AIzaSyDtUsQBIaxy_DRyCiMbu8jH-9JfyZnDPTU",
 
-  authDomain:
-    "duels-script.firebaseapp.com",
+authDomain:
+"duels-script.firebaseapp.com",
 
-  projectId:
-    "duels-script",
+projectId:
+"duels-script",
 
-  storageBucket:
-    "duels-script.firebasestorage.app",
+storageBucket:
+"duels-script.firebasestorage.app",
 
-  messagingSenderId:
-    "335535098932",
+messagingSenderId:
+"335535098932",
 
-  appId:
-    "1:335535098932:web:eb57bf702cd74b65324e61",
+appId:
+"1:335535098932:web:eb57bf702cd74b65324e61",
 
-  measurementId:
-    "G-CJMN5KNCWM",
+measurementId:
+"G-CJMN5KNCWM",
 
-  databaseURL:
-    "https://duels-script-default-rtdb.firebaseio.com/"
+databaseURL:
+"https://duels-script-default-rtdb.firebaseio.com/"
+
 };
 
-
-const app =
-  initializeApp(firebaseConfig);
-
-const database =
-  getDatabase(app);
+const app=initializeApp(firebaseConfig);
+const db=getDatabase(app);
 
 
-/* REAL GLOBAL VISITOR COUNTER */
+/* GLOBAL VISITORS */
 
-const visitorsRef =
-  ref(database, "visitors");
-
+const visitorsRef=ref(db,"visitors");
 
 runTransaction(
-  visitorsRef,
-  current => {
-
-    return (current || 0) + 1;
-
-  }
+visitorsRef,
+current=>(current||0)+1
 )
-.then(() => {
+.then(()=>{
 
-  onValue(
-    visitorsRef,
-    snapshot => {
-
-      const count =
-        snapshot.val() || 0;
-
-      document.getElementById(
-        "teamCounter"
-      ).textContent =
-        "👥 Visitors: " + count;
-
-      document.getElementById(
-        "teamNumber"
-      ).textContent =
-        count;
-
-    }
-  );
+document.getElementById(
+"firebaseStatus"
+).textContent="CONNECTED";
 
 })
-.catch(error => {
+.catch(error=>{
 
-  console.error(
-    "Firebase error:",
-    error
-  );
+console.error(error);
 
-  document.getElementById(
-    "teamCounter"
-  ).textContent =
-    "👥 Visitors: unavailable";
-
-  document.getElementById(
-    "teamNumber"
-  ).textContent =
-    "—";
+document.getElementById(
+"firebaseStatus"
+).textContent="ERROR";
 
 });
 
 
-/* LOCAL VIEWS */
+onValue(
+visitorsRef,
+snapshot=>{
 
-let views =
-  Number(
-    localStorage.getItem(
-      "scriptHubViews"
-    ) || 0
-  ) + 1;
-
-localStorage.setItem(
-  "scriptHubViews",
-  views
-);
+const count=snapshot.val()||0;
 
 document.getElementById(
-  "viewCounter"
-).textContent =
-  "👁️ Views: " + views;
+"visitorCount"
+).textContent=count;
+
+}
+);
 
 
-/* OPEN HUB */
+/* LIVE ONLINE */
 
-window.openScript = function() {
+const sessionId=
+Date.now()+"_"+Math.random()
+.toString(36)
+.substring(2);
 
-  document.getElementById(
-    "scriptSection"
-  ).style.display = "block";
+const onlineRef=
+ref(db,"online/"+sessionId);
 
-  document.getElementById(
-    "loading"
-  ).style.display = "none";
+set(onlineRef,true);
 
-};
+onDisconnect(onlineRef).remove();
+
+onValue(
+ref(db,"online"),
+snapshot=>{
+
+const users=
+snapshot.exists()
+?Object.keys(snapshot.val()).length
+:0;
+
+document.getElementById(
+"onlineCount"
+).textContent=users;
+
+}
+);
+
+
+/* COPY COUNTER */
+
+const copiesRef=ref(db,"copies");
+
+onValue(
+copiesRef,
+snapshot=>{
+
+document.getElementById(
+"copyCount"
+).textContent=
+snapshot.val()||0;
+
+}
+);
+
+
+/* LAST UPDATE */
+
+document.getElementById(
+"lastUpdate"
+).textContent=
+"🕒 Last update: "+
+new Date().toLocaleString();
 
 
 /* COPY */
 
-window.copyText = function(text) {
+window.copyInfo=function(button){
 
-  if (
-    navigator.clipboard &&
-    window.isSecureContext
-  ) {
+const card=button.closest(".script-card");
 
-    navigator.clipboard.writeText(text);
+const text=
+card.querySelector(".script-box")
+.innerText;
 
-  } else {
+navigator.clipboard?.writeText(text);
 
-    const area =
-      document.createElement(
-        "textarea"
-      );
+runTransaction(
+copiesRef,
+current=>(current||0)+1
+);
 
-    area.value = text;
+button.textContent="✅ COPIED!";
 
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-
-    document.body.appendChild(area);
-
-    area.select();
-
-    document.execCommand("copy");
-
-    area.remove();
-
-  }
+setTimeout(
+()=>button.textContent="📋 COPY INFO",
+1500
+);
 
 };
 
 
-/* COPY ALL */
+/* FAVORITES */
 
-window.copyAllScripts = function() {
+window.toggleFavorite=function(button){
 
-  const scripts =
-    [
-      ...document.querySelectorAll(
-        ".script-box"
-      )
-    ]
-    .map(
-      x => x.innerText
-    )
-    .join("\n\n");
+if(button.textContent.includes("☆")){
 
-  copyText(scripts);
+button.textContent="★ FAVORITED";
 
-  alert("✅ Copied!");
+}else{
 
-};
+button.textContent="☆ FAVORITE";
 
-
-/* FAVORITE */
-
-window.toggleFavorite = function(button) {
-
-  if (
-    button.textContent.includes("☆")
-  ) {
-
-    button.textContent =
-      "★ FAVORITED";
-
-  } else {
-
-    button.textContent =
-      "☆ FAVORITE";
-
-  }
-
-};
-
-
-/* DARK MODE */
-
-window.toggleDarkMode = function() {
-
-  document.body.classList.toggle(
-    "dark"
-  );
+}
 
 };
 
 
 /* SEARCH */
 
-window.searchScripts = function() {
+window.searchScripts=function(){
 
-  const query =
-    document.getElementById(
-      "searchInput"
-    ).value.toLowerCase();
+const query=
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
 
-  const cards =
-    document.querySelectorAll(
-      ".script-card, .timebomb-card"
-    );
+document
+.querySelectorAll(".script-card")
+.forEach(card=>{
 
-  cards.forEach(card => {
+card.style.display=
+card.innerText
+.toLowerCase()
+.includes(query)
+?""
+:"none";
 
-    card.style.display =
-      !query ||
-      card.innerText
-        .toLowerCase()
-        .includes(query)
-        ? ""
-        : "none";
-
-  });
+});
 
 };
 
 
 /* FILTER */
 
-window.filterScripts = function(type) {
+window.filterScripts=function(type){
 
-  const cards =
-    document.querySelectorAll(
-      ".script-card, .timebomb-card"
-    );
+document
+.querySelectorAll(".script-card")
+.forEach(card=>{
 
-  cards.forEach(card => {
+if(type==="all"){
 
-    if (type === "all") {
+card.style.display="";
 
-      card.style.display = "";
+}else{
 
-    } else if (type === "duels") {
+card.style.display=
+card.dataset.type===type
+?""
+:"none";
 
-      card.style.display =
-        card.classList.contains(
-          "script-card"
-        )
-        ? ""
-        : "none";
+}
 
-    } else {
+});
 
-      card.style.display = "none";
+};
 
-    }
 
-  });
+/* DARK MODE */
+
+window.toggleDarkMode=function(){
+
+document.body.classList.toggle("dark");
 
 };
 
 
 /* DISCORD */
 
-window.openDiscord = function() {
+window.openDiscord=function(){
 
-  window.open(
-    "https://discord.gg/Z7phAABJb",
-    "_blank"
-  );
+window.open(
+"https://discord.gg/Z7phAABJb",
+"_blank"
+);
 
 };
 
 
 /* YOUTUBE */
 
-window.openYouTube = function() {
+window.openYouTube=function(){
 
-  window.open(
-    "https://www.youtube.com/@ryxon_rbx",
-    "_blank"
-  );
-
-};
-
-
-/* GAME PASS */
-
-window.openGamePass = function() {
-
-  window.open(
-    "https://www.roblox.com/game-pass/1963536489",
-    "_blank"
-  );
-
-};
-
-
-/* HOME */
-
-window.goHome = function() {
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-};
-
-
-/* UPDATES */
-
-window.showUpdates = function() {
-
-  document
-    .getElementById(
-      "announcements"
-    )
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-
-};
-
-
-/* SHARE */
-
-window.sharePage = function() {
-
-  if (navigator.share) {
-
-    navigator.share({
-
-      title:
-        "DUELS SCRIPT HUB",
-
-      url:
-        window.location.href
-
-    });
-
-  } else {
-
-    copyText(
-      window.location.href
-    );
-
-    alert(
-      "Page link copied!"
-    );
-
-  }
+window.open(
+"https://www.youtube.com/@ryxon_rbx",
+"_blank"
+);
 
 };
 
 
 /* TOP */
 
-window.goTop = function() {
+window.goTop=function(){
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-};
-
-
-/* CLOSE UPDATE */
-
-window.closeUpdate = function() {
-
-  document.getElementById(
-    "updateBanner"
-  ).style.display = "none";
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 };
 
-</script>
-
-</body>
+</script></body>
 </html>

@@ -296,6 +296,37 @@
       border-color: #ff8aa0;
     }
 
+    .community-panel {
+      margin-top: 28px;
+      padding: 20px;
+      border: 2px solid #b45cff;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(30,0,45,.95), rgba(75,5,85,.75));
+      box-shadow: 0 0 28px rgba(180,92,255,.35);
+    }
+
+    .community-buttons {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      padding: 12px 6px;
+      border: 1px solid #d58aff;
+      border-radius: 12px;
+      background: rgba(20,0,30,.55);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
     .vampire-card {
       margin: 18px auto;
       padding: 18px;
@@ -383,8 +414,6 @@
 
     <button class="discord-main-button" onclick="openDiscord()">💬 JOIN OUR DISCORD</button>
 
-    <button class="social-button" onclick="openYouTube()">▶️ SUBSCRIBE ON YOUTUBE</button>
-
     <div id="scriptSection">
       <h2>DUELS SCRIPT</h2>
 
@@ -398,17 +427,6 @@
 
       <button id="copyButton" onclick="copyScript()">COPY</button>
       <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
-
-      <div class="script-card">
-        <span class="badge">🆕 NEW</span>
-        <h2>SERVER BYPASS SCRIPT</h2>
-        <p class="description">A server bypass script section.</p>
-        <div class="script-box">
-          loadstring(game:HttpGet("https://raw.githubusercontent.com/SolunaScript/Kawatan-Hub/refs/heads/main/Kawatan%20Script"))()
-        </div>
-        <button id="copyBypassButton" onclick="copyBypassScript()">COPY</button>
-        <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
-      </div>
 
       <div class="timebomb-card">
         <div class="timebomb-title">⏱️💣 TIME BOMB DUELS</div>
@@ -440,7 +458,7 @@
       <div class="extra-panel">
         <h2>🏆 TOP SCRIPTS</h2>
         <p>⭐ DUELS SCRIPT</p>
-        <p>🆕 SERVER BYPASS SCRIPT</p>
+        <p>⏱️💣 TIME BOMB DUELS</p>
       </div>
 
       <div class="feature-grid">
@@ -530,15 +548,6 @@
       }, 1500);
     }
 
-    function copyBypassScript() {
-      const script = document.querySelectorAll(".script-box")[1].innerText;
-      navigator.clipboard.writeText(script).catch(() => {});
-      document.getElementById("copyBypassButton").textContent = "COPIED!";
-      setTimeout(() => {
-        document.getElementById("copyBypassButton").textContent = "COPY";
-      }, 1500);
-    }
-
     function copyTimebombScript() {
       const script = document.querySelector(".timebomb-card .script-box").innerText;
       navigator.clipboard.writeText(script).catch(() => {});
@@ -563,9 +572,7 @@
 
     function filterScripts(type) {
       const duelsTitle = document.querySelector("#scriptSection > h2");
-      const bypassCard = document.querySelector(".script-card");
       duelsTitle.style.display = type === "bypass" ? "none" : "";
-      bypassCard.style.display = type === "duels" ? "none" : "";
     }
 
     function toggleFavorite(button) {

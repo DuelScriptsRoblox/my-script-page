@@ -296,6 +296,37 @@
       border-color: #ff8aa0;
     }
 
+    .youtube-under-scripts {
+      width: 100%;
+      max-width: 420px;
+      margin: 22px auto 0;
+      display: block;
+    }
+
+    .cool-panel {
+      margin-top: 24px;
+      padding: 20px;
+      border: 2px solid #d58aff;
+      border-radius: 20px;
+      background: rgba(20,0,35,.72);
+      box-shadow: 0 0 25px rgba(190,70,255,.3);
+    }
+
+    .cool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .cool-item {
+      padding: 13px 8px;
+      border: 1px solid #b45cff;
+      border-radius: 12px;
+      background: rgba(50,0,70,.6);
+      font-weight: bold;
+    }
+
     .community-panel {
       margin-top: 28px;
       padding: 20px;
@@ -438,16 +469,27 @@
         <button class="favorite-button" onclick="toggleFavorite(this)">☆ FAVORITE</button>
       </div>
 
+      <button class="social-button youtube-under-scripts" onclick="openYouTube()">▶️ SUBSCRIBE ON YOUTUBE</button>
+
       <div class="action-row">
         <button id="darkModeButton" onclick="toggleDarkMode()">🌙 DARK MODE</button>
         <button id="copyAllButton" onclick="copyAllScripts()">COPY ALL</button>
-        <button class="discord-button" onclick="openDiscord()">DISCORD</button>
         <button class="home-button" onclick="goHome()">HOME</button>
         <button class="updates-button" onclick="showUpdates()">🆕 UPDATES</button>
         <button class="favorites-button" onclick="alert('Favorites coming soon!')">⭐ FAVORITES</button>
-        <button class="games-button" onclick="alert('Games section coming soon!')">🎮 GAMES</button>
         <button class="share-button" onclick="sharePage()">🔗 SHARE</button>
         <button class="refresh-button" onclick="location.reload()">🔄 REFRESH</button>
+      </div>
+
+      <div class="cool-panel">
+        <h2>🧛 NIGHT HUB</h2>
+        <p>✨ Explore the hub, discover scripts and stay updated.</p>
+        <div class="cool-grid">
+          <div class="cool-item">⚡ FAST COPY</div>
+          <div class="cool-item">🔥 HOT SCRIPT</div>
+          <div class="cool-item">🆕 NEW DROP</div>
+          <div class="cool-item">🦇 NIGHT MODE</div>
+        </div>
       </div>
 
       <div class="announcements" id="announcements">

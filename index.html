@@ -627,6 +627,7 @@
       document.getElementById("updateBanner").style.display = "none";
     }
 
+
     let views = Number(localStorage.getItem("scriptHubViews") || 0) + 1;
     localStorage.setItem("scriptHubViews", views);
     document.getElementById("viewCounter").textContent = "👁️ Views: " + views;

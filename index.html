@@ -230,6 +230,22 @@
       font-weight: bold;
     }
 
+    .team-counter {
+      margin-top: 25px;
+      padding: 20px;
+      border: 2px solid #d58aff;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(30,0,45,.95), rgba(80,5,95,.75));
+      box-shadow: 0 0 25px rgba(190,70,255,.35);
+    }
+
+    .team-number {
+      font-size: 42px;
+      font-weight: 900;
+      margin: 8px 0;
+      text-shadow: 0 0 18px #d58aff;
+    }
+
     body.dark .extra-panel {
       background: #222;
       border-color: white;
@@ -550,6 +566,13 @@
         <h2>📈 STATUS</h2>
         <p class="status">🟢 WEBSITE ONLINE</p>
         <p id="viewCounter" class="status">👁️ Views: 0</p>
+      <p id="teamCounter" class="status">👥 Visitors: 0</p>
+      </div>
+
+      <div class="team-counter">
+        <h2>👥 TEAM ONLINE</h2>
+        <div id="teamNumber" class="team-number">0</div>
+        <p>People have visited the hub</p>
       </div>
 
       <div class="extra-panel" id="updateBanner">
@@ -680,6 +703,11 @@
     let views = Number(localStorage.getItem("scriptHubViews") || 0) + 1;
     localStorage.setItem("scriptHubViews", views);
     document.getElementById("viewCounter").textContent = "👁️ Views: " + views;
+
+    let teamVisitors = Number(localStorage.getItem("scriptHubTeamVisitors") || 0) + 1;
+    localStorage.setItem("scriptHubTeamVisitors", teamVisitors);
+    document.getElementById("teamCounter").textContent = "👥 Visitors: " + teamVisitors;
+    document.getElementById("teamNumber").textContent = teamVisitors;
   </script>
 
 </body>
